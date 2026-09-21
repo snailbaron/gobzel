@@ -46,10 +46,10 @@
             {
                 "kind": "archive",
                 "url": "https://github.com/golangci/golangci-lint/releases/download/v2.13.2/golangci-lint-2.13.2-windows-amd64.zip",
-                "sha256": "sha256:4735fdc8e84a0cfb7a15a1c364a650942f88215e0d36c674ebc4024f7b554524",
+                "sha256": "4735fdc8e84a0cfb7a15a1c364a650942f88215e0d36c674ebc4024f7b554524",
                 "os": "windows",
                 "cpu": "x86_64",
-                "file": "golangci-lint-2.13.2-windows-amd64/golangci-lint"
+                "file": "golangci-lint-2.13.2-windows-amd64/golangci-lint.exe"
             }
         ]
     }
