@@ -1,3 +1,4 @@
 .env
 /bazel-*
+/bazel_env.lock
 /external
