@@ -1,0 +1,37 @@
+name: Pre-commit
+
+on:
+  push:
+    branches: ["**"]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  bazel-build:
+    strategy:
+      matrix:
+        runner: [ubuntu-26.04, macos-26, windows-2025]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Load Bazel disk cache
+        uses: actions/cache@v6
+        with:
+          key: bazel-caches-${{ matrix.runner }}-${{ github.sha }}
+          restore-keys: bazel-caches-${{ matrix.runner }}-
+          path: |
+            ~/.cache/bazel-output-base
+            ~/.cache/bazel-disk-cache
+
+      - name: bazel build
+        run: >-
+          bazel
+          --output_base=~/.cache/bazel-output-base
+          build
+          --disk_cache=~/.cache/bazel-disk-cache
+          --experimental_disk_cache_gc_max_size=1G
+          //...
