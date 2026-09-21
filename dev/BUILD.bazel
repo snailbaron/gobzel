@@ -4,6 +4,7 @@ load("@rules_go//go:def.bzl", "TOOLS_NOGO", "nogo")
 
 bazel_env(
     name = "env",
+    tags = ["manual"],
     tools = {
         "buildifier": TOOLS["buildifier"],
         "go": "@rules_go//go",
